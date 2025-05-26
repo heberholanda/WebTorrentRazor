@@ -1,0 +1,45 @@
+﻿@page
+@using WebTorrentRazorPlayer.Pages
+
+@model BeautyModel
+@{
+    ViewData["Title"] = "Beauty Player - Web Torrent";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<!-- HTML -->
+<div id="hero">
+    <form id="torrentForm">
+        <label for="torrentId">Download from a magnet link: </label>
+        <input name="torrentId" , placeholder="magnet:" value="magnet:?xt=urn:btih:08ada5a7a6183aae1e09d831df6748d566095a10&dn=Sintel&tr=udp://explodie.org:6969&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://tracker.empire-js.us:1337&tr=udp://tracker.leechers-paradise.org:6969&tr=udp://tracker.opentrackr.org:1337&tr=wss://tracker.btorrent.xyz">
+        <button type="submit">Download</button>
+    </form>
+
+    <div id="output">
+        <div id="progressBar"></div>
+        <div id="video-container"></div>
+    </div>
+
+    <div id="status">
+        <div>
+            <span class="show-leech">Downloading </span>
+            <span class="show-seed">Seeding </span>
+            <code><a id="torrentLink" href="#" target="_blank">Torrent</a></code>
+            <span class="show-leech"> from </span>
+            <span class="show-seed"> to </span>
+            <code id="numPeers">0 peers</code>.
+        </div>
+        <div>
+            <code id="downloaded"></code> of <code id="total"></code> — <span id="remaining"></span><br />
+            &#x2198;<code id="downloadSpeed">0 b/s</code> / &#x2197;<code id="uploadSpeed">0 b/s</code>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- WebTorrent & Moment.js -->
+    <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="/js/webtorrent-beauty.js"></script>
+}
